@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class Mp3File implements Comparable<Mp3File> {
+	String name;
+	String title;
+
+	public Mp3File(String name, String title) {
+		this.name = name;
+		this.title = title;
+	}
+
+	public String toString() {
+		return name + " : " + title;
+	}
+
+	public String compareTo(Mp3File m) {
+		return this.name - m.name;
+	}
+}
+
+public class test05 {
+
+	public static void main(String[] args) {
+		ArrayList<Mp3File> list = new ArrayList<>();
+		list.add(new Mp3File("Santa Tell Me", "Ariana Grande"));
+		list.add(new Mp3File("Last Christmas", "Wham"));
+		list.add(new Mp3File("Snowman", "Sia"));
+		Collections.sort(list);
+		System.out.println("- 정렬 1");
+		for (Mp3File s : list)
+			System.out.println(s);
+		System.out.println("- 정렬 2");
+		Collections.sort(list, (m1, m2) -> m1.title.compareTo(m2.title));
+		for (Mp3File s : list)
+			System.out.println(s);
+
+	}
+
+}
